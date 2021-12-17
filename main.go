@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"main/gitApiOperate"
 	"os"
 )
 
@@ -17,7 +16,7 @@ func main() {
 	var sign = true
 	var option int
 	for sign {
-		gitApiOperate.ShowMenu()
+		ShowMenu()
 		option = 0
 		for option == 0 {
 			fmt.Println("please input your option:")
@@ -26,37 +25,37 @@ func main() {
 		_, _ = fmt.Scanln()
 		if option != 6 {
 			if repoName == "" {
-				repoName = gitApiOperate.GetRepoName()
+				repoName = GetRepoName()
 				_, _ = fmt.Scanln()
 			}
 			if userName == "" {
-				userName = gitApiOperate.GetUserName()
+				userName = GetUserName()
 				_, _ = fmt.Scanln()
 			}
-			repoURL = gitApiOperate.GetRepourl(repoName, userName)
+			repoURL = GetRepourl(repoName, userName)
 			repos = append(repos, "repo:"+userName+"/"+repoName)
 
 		}
 		switch option {
 		case 1:
 			{
-				gitApiOperate.SearchIssue(repos)
+				SearchIssue(repos)
 			}
 		case 2:
 			{
-				gitApiOperate.ListAppointIssue(repoURL, repoName, token)
+				ListAppointIssue(repoURL, repoName, token)
 			}
 		case 3:
 			{
-				gitApiOperate.CreateIssue(repoURL, repoName, token)
+				CreateIssue(repoURL, repoName, token)
 			}
 		case 4:
 			{
-				gitApiOperate.UpdateIssue(repoURL, repoName, token)
+				UpdateIssue(repoURL, repoName, token)
 			}
 		case 5:
 			{
-				gitApiOperate.CloseIssue(repoURL, repoName, token)
+				CloseIssue(repoURL, repoName, token)
 			}
 		case 6:
 			{

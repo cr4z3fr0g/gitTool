@@ -1,4 +1,4 @@
-package gitApiOperate
+package main
 
 import "time"
 
